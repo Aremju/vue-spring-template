@@ -1,0 +1,3 @@
+*
+!/backend/target/*.jar
+!backend/src/main/resources/db/*
