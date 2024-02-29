@@ -1,0 +1,1 @@
+CREATE USER test_user PASSWORD 'test_password';
