@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  postgresdb:
+    image: 'postgres:latest'
+    container_name: 'vuespringtemplatedb'
+    environment:
+      - POSTGRES_DB=vuespringtemplate
+    ports:
+      - '5432:5432'
+    restart: always
+    volumes:
+      - ./backend/src/main/resources/db/sql_scripts/initTestDB.sql:/docker-entrypoint-initdb.d/0_init.sql
+    env_file:
+      - .env
+  initcontainer:
+    container_name: 'initliquibase'
+    build:
+      context: .
+      dockerfile: Dockerfile_liquibase
+    environment:
+      - POSTGRES_URL=jdbc:postgresql://postgresdb:5432/vuespringtemplate
+    depends_on:
+      - postgresdb
+    env_file:
+      - .env

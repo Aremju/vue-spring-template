@@ -1,0 +1,3 @@
+FROM liquibase/liquibase
+COPY --chown=liquibase:liquibase backend/src/main/resources/db/  /liquibase/changelog
+CMD ["sh", "-c", "docker-entrypoint.sh --url=${POSTGRES_URL} --username=${POSTGRES_USER} --password=${POSTGRES_PASSWORD} --changeLogFile=changelog/master.xml --logLevel=WARNING update"]
