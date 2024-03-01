@@ -1,1 +1,1 @@
-CREATE USER test_user PASSWORD 'test_password';
+CREATE USER testuser PASSWORD 'testpassword';
