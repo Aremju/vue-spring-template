@@ -45,7 +45,7 @@ jobs:
           working-directory: ./frontend
           start: npm run dev -- --port 4173 --mode test
           wait-on: 'http://127.0.0.1:4173/'
-          browser: chrome
+          browser: electron
 
   check-dependencies:
     runs-on: ubuntu-latest
